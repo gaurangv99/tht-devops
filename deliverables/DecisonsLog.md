@@ -1,5 +1,5 @@
 # Explain decisions made during the implmentation of the test
-I first ensured that the local setup worked well to understand the code flow. Then, I verified that we achieved similar results when deploying to ECS on EC2 and Minikube.I implemed the minikube on a ec2 instance as I had some issues with my local minikube setup
+I first ensured that the local setup worked properly to understand the code flow. Then, I verified that we achieved similar results when deploying to ECS on EC2 and Minikube. I implemented Minikube on an EC2 instance as I encountered some issues with my local Minikube setup.
 
 # What is missing 
 Minor issues were present, such as some misconfigured outputs like module.ecs[0].alb_dns_name. Additionally, the data lookup for the availability zone was missing in the VPC module, and the monitoring namespace was also missing while I created the monitoring setup on minikube,
