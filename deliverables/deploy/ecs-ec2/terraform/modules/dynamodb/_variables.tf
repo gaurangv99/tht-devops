@@ -26,3 +26,27 @@ variable "inventory_hash_key" {
   type        = string
   default     = "product_id"
 }
+
+variable "orders_read_capacity" {
+  description = "Read capacity for orders table"
+  type        = number
+  default     = 1
+}
+
+variable "orders_write_capacity" {
+  description = "Write capacity for orders table"
+  type        = number
+  default     = 1
+}
+
+variable "inventory_read_capacity" {
+  description = "Read capacity for inventory table"
+  type        = number
+  default     = 1
+}
+
+variable "inventory_write_capacity" {
+  description = "Write capacity for inventory table"
+  type        = number
+  default     = 1
+}
