@@ -83,7 +83,6 @@ module "dynamodb" {
   environment = var.environment
 }
 
-
 module "security" {
   source = "./modules/security"
 

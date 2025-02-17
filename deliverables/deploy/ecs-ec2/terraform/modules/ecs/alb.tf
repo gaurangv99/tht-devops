@@ -15,7 +15,7 @@ resource "aws_lb_target_group" "order_api" {
   name        = "${var.environment}-order-api-tg"
   port        = 80
   protocol    = "HTTP"
-  target_type = "instance"
+  target_type = "ip"
 
   health_check {
     healthy_threshold   = 2
@@ -24,6 +24,7 @@ resource "aws_lb_target_group" "order_api" {
     interval            = 10
     path                = "/health"
     matcher             = "200"
+    port                = 8000
   }
 }
 

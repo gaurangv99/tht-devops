@@ -4,8 +4,8 @@ resource "aws_security_group" "ecs_tasks" {
   vpc_id      = var.vpc_id
 
   ingress {
-    from_port       = 32768
-    to_port         = 65535
+    from_port       = 8000
+    to_port         = 8000
     protocol        = "tcp"
     security_groups = [aws_security_group.alb.id]
   }
@@ -58,4 +58,14 @@ resource "aws_security_group" "alb" {
 
   tags = { Name = "${var.environment}-alb-sg" }
 
+}
+
+# Allow order-api to communicate with order-processor
+resource "aws_security_group_rule" "ecs_tasks" {
+  type              = "ingress"
+  from_port         = 8000
+  to_port           = 8000
+  protocol          = "tcp"
+  security_group_id = aws_security_group.ecs_tasks.id
+  source_security_group_id = aws_security_group.ecs_tasks.id
 }
