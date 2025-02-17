@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.orderApi.name }}
+spec:
+  type: {{ .Values.orderApi.service.type }}
+  ports:
+    - port: {{ .Values.orderApi.service.port }}
+      targetPort: {{ .Values.orderApi.ports.containerPort }}
+      protocol: TCP
+      name: order-api
+      nodePort: {{ .Values.orderApi.service.nodePort }}
+  selector:
+    app: {{ .Values.orderApi.name }}

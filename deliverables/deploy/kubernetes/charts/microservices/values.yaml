@@ -18,3 +18,32 @@ dynamodb:
     limits:
       memory: "1Gi"
       cpu: "500m"
+
+orderApi:
+  name: order-api
+  image:
+    repository: order-api
+    tag: latest
+    pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: IfNotPresent
+  ports:
+    containerPort: 8000
+  service:
+    type: NodePort
+    port: 8000
+    nodePort: 31000
+  orderProcessorUrl: http://order-processor:8000
+
+orderProcessor:
+  name: order-processor
+  image:
+    repository: order-processor
+    tag: latest
+    pullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent
+  ports:
+    containerPort: 8000
+  service:
+    type: ClusterIP
+    port: 8000

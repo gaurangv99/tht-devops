@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.orderProcessor.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.orderProcessor.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.orderProcessor.name }}
+    spec:
+      containers:
+        - name: {{ .Values.orderProcessor.name }}
+          image: "{{ .Values.orderProcessor.image.repository }}:{{ .Values.orderProcessor.image.tag }}"
+          imagePullPolicy: "{{ .Values.orderProcessor.image.pullPolicy }}"
+          ports:
+            - containerPort: {{ .Values.orderProcessor.ports.containerPort }}
+          env:
+            - name: DYNAMODB_ENDPOINT
+              value: "http://dynamodb-local:8000"
+            - name: AWS_ACCESS_KEY_ID
+              value: "local"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "local"
+            - name: AWS_DEFAULT_REGION
+              value: "us-west-2"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.orderProcessor.ports.containerPort }}
+            initialDelaySeconds: 20
+            periodSeconds: 30
