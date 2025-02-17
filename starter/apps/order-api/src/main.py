@@ -40,9 +40,11 @@ DYNAMODB_ENDPOINT = os.getenv("DYNAMODB_ENDPOINT", None)
 
 DYNAMODB_TABLE = os.getenv("DYNAMODB_TABLE", "orders")
 
+AWS_REGION = os.getenv("AWS_REGION", None)
+
 ORDER_PROCESSOR_URL = os.getenv("ORDER_PROCESSOR_URL", "http://localhost:8001")
 
-dynamodb = boto3.resource("dynamodb", endpoint_url=DYNAMODB_ENDPOINT)
+dynamodb = boto3.resource("dynamodb", endpoint_url=DYNAMODB_ENDPOINT,region_name=AWS_REGION)
 orders_table = dynamodb.Table(DYNAMODB_TABLE)
 
 

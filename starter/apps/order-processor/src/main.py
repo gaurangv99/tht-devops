@@ -9,6 +9,7 @@ from typing import Dict, Any, Optional
 
 DYNAMODB_ENDPOINT=os.getenv("DYNAMODB_ENDPOINT", None)
 DYNAMODB_TABLE=os.getenv("DYNAMODB_TABLE", "inventory")
+AWS_REGION = os.getenv("AWS_REGION", None)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,7 +22,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="Order Processor")
 
 dynamodb = boto3.resource(
-    "dynamodb", endpoint_url=DYNAMODB_ENDPOINT)
+    "dynamodb", endpoint_url=DYNAMODB_ENDPOINT,region_name=AWS_REGION)
 
 inventory_table = dynamodb.Table(DYNAMODB_TABLE)
 
