@@ -15,9 +15,10 @@
 
 # Kubernetes and Helm
 ## How to deploy to MiniKube
-- Go to the root of the repository run make helm-apply
+- Set the shell to use Minikube's Docker daemon, then run make docker-build.
+- Go to the root of the repository run make helm-apply.
 - Seed the dynamoDB with the instructions mentioned in MINIKUBE.md
-- Install monitoring tools Grafana and Prometheus
+- Install monitoring tools Grafana and Prometheus.
 
 ## How to Test 
 - Check pods service and deployment are working as expected 
