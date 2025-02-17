@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.orderProcessor.name }}
+spec:
+  type: {{ .Values.orderProcessor.service.type }}
+  ports:
+    - port: {{ .Values.orderProcessor.service.port }}
+      targetPort: {{ .Values.orderProcessor.ports.containerPort }}
+      protocol: TCP
+      name: order-processor
+  selector:
+    app: {{ .Values.orderProcessor.name }}
