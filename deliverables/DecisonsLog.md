@@ -1,8 +1,8 @@
 # Explain decisions made during the implmentation of the test
-I first ensured that the local setup worked properly to understand the code flow. Then, I verified that we achieved similar results when deploying to ECS on EC2 and Minikube. I implemented Minikube on an EC2 instance as I encountered some issues with my local Minikube setup.
+I first ensured that the local setup worked properly to understand the code flow. Then, I verified that we achieved similar results when deploying to ECS on EC2 and Minikube. I implemented Minikube on an EC2 instance, as I encountered some issues with my local Minikube setup. From my previous experience, the order in which services are deployed also matters in the case of service connect, so I made sure, by using a dependency block in Terraform, that the order processor gets deployed first
 
 # What is missing 
-Minor issues were present, such as some misconfigured outputs like module.ecs[0].alb_dns_name. Additionally, the data lookup for the availability zone was missing in the VPC module, and the monitoring namespace was also missing while I created the monitoring setup on minikube,
+Minor issues were present, such as some misconfigured outputs like module.ecs[0].alb_dns_name. Additionally, the data lookup for the availability zone was missing in the VPC module, and the monitoring namespace was also missing while I created the monitoring setup on minikube.
 
 # What could be improved 
 Terraform modules can be further modularized by placing each AWS service in a separate GitHub repository, which is considered good practice. Additionally, Makefiles could be consolidated for better organization and maintainability. Security groups were also too open initially in the test and should be restricted for improved security. I also changed the AWS target group type to 'IP,' adhering to AWS best practices.
