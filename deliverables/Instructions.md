@@ -9,6 +9,7 @@
 - Make a curl request on loadbalancer endpoint 
 ![Load balancer request](post.png)
 - Check if new order is created in dynamodb table for orders and the inventory table is updted as per the orders 
+![Inventory DDB table](inventory.png) ![Orders DDB table](orders.png)
 
 
 # Kubernetes and Helm
