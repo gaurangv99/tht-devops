@@ -38,7 +38,4 @@ grafana password: ˜kubectl get secret --namespace monitoring grafana -o jsonpat
 # install prometheus 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm upgrade -i prometheus prometheus-community/prometheus \
-    --namespace prometheus \
-    --set alertmanager.persistence.storageClass="gp2" \
-    --set server.persistentVolume.storageClass="gp2"
-
+    --namespace prometheus 

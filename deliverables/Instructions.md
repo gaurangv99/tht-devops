@@ -25,5 +25,5 @@
 - The Order Api service is expose as NodePort so fetch the minikube ip and make a POST request to Order Api /orders endpoint
 ![minikube post](<minikube post.png>)
 - Do a Get request to fetch the orders by passing order id as query parameter to Order Api service
-- Make sure monitoring setup is working as expected
-![grafana](grafana.png)
+- Make sure the monitoring setup is working as expected. I took some additional steps, such as exposing the Prometheus service as a NodePort and adding it as a datasource in Grafana
+![grafana dashboard](<grafana dashboard.png>)
